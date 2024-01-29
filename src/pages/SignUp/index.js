@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Platform } from 'react-native';
 
 import {
@@ -10,7 +10,14 @@ import {
     SubmitText
 } from '../SignIn/styles';
 
+import { AuthContext } from '../../contexts/auth'
+
 export default function SingUp() {
+    const { user } = useContext(AuthContext)
+
+    function handleSignUp() {
+        console.log(user.nome);
+    }
     return (
         <Background>
             <Conteiner
@@ -20,16 +27,16 @@ export default function SingUp() {
                 <AreaInput>
                     <Input placeholder="Nome" />
                 </AreaInput>
-                
+
                 <AreaInput>
                     <Input placeholder='Seu Email' />
                 </AreaInput>
-                
+
                 <AreaInput>
                     <Input placeholder='Sua Senha' />
                 </AreaInput>
 
-                <SubmitButton>
+                <SubmitButton onPress={handleSignUp}>
                     <SubmitText>Cadastrar</SubmitText>
                 </SubmitButton>
 
