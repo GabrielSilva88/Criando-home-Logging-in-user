@@ -1,4 +1,6 @@
 import React from 'react';
+import { Platform } from 'react-native';
+import { useNavigation } from '@react-navigation/native'
 
 import {
     Background,
@@ -13,9 +15,15 @@ import {
 } from './styles';
 
 export default function SingIn() {
+    
+    const navigation = useNavigation();
+    
     return (
         <Background>
-            <Conteiner>
+            <Conteiner
+                behavior={Platform.OS === 'ios' ? 'padding' : ''}
+                enabled
+            >   
                 <Logo
                     source={require('../../assets/Logo.png')}
                 />
@@ -30,10 +38,10 @@ export default function SingIn() {
                     />
                 </AreaInput>
 
-                <SubmitButton activeOpacity={1.5}>
+                <SubmitButton activeOpacity={0.9}>
                     <SubmitText>Acessar</SubmitText>
                 </SubmitButton>
-                <Link>
+                <Link onPress={() => navigation.navigate('SignUp')}>
                     <LinkText>Criar uma Conta</LinkText>
                 </Link>
             </Conteiner>
