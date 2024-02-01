@@ -30,10 +30,14 @@ function AuthProvider({ children }) {
             console.log('ERRO AO CADASTRAR', error);
             setLoadingAuth(false);
         }
-
     }
+
+    async function signIn(email, password){
+        console.log("Email Test: ", email);
+    }
+
     return (
-        <AuthContext.Provider value={{user, signUp, loadingAuth}}>
+        <AuthContext.Provider value={{ signed: !!user, user, signUp, signIn, loadingAuth }}>
             {children}
         </AuthContext.Provider>
     )

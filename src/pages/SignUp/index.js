@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { View, Text, Platform, ActivityIndicator } from 'react-native';
-
+ 
 import {
     Background,
     Conteiner,
