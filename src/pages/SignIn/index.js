@@ -15,15 +15,15 @@ import {
     LinkText
 } from './styles';
 
-export default function SingIn() {
+export default function SignIn() {
 
     const navigation = useNavigation();
-    const { SingIn, loadingAuth } = useContext(AuthContext);
+    const { signIn, loadingAuth } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     function handleLogin() {
-        SingIn(email, password);
+        signIn(email, password);
     }
 
     return (
@@ -51,7 +51,14 @@ export default function SingIn() {
                 </AreaInput>
 
                 <SubmitButton activeOpacity={0.9} onPress={handleLogin}>
-                    <SubmitText>Acessar</SubmitText>
+                    {
+                        loadingAuth ? (
+                            <ActivityIndicator size={20} color={"#FFF"} />
+                        ) : (
+                            <SubmitText>Acessar</SubmitText>
+                        )
+                    }
+
                 </SubmitButton>
                 <Link onPress={() => navigation.navigate('SignUp')}>
                     <LinkText>Criar uma Conta</LinkText>
